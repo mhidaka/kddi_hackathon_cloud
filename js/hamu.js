@@ -23,7 +23,7 @@ var server = (function () {
           console.log(data);
           json = JSON.stringify(data);
           alert(json);
-        }
+        });
 
         //var script = document.createElement('script');
         //script.src = cloud.HOST + '/get_latest?callback=server.callback';

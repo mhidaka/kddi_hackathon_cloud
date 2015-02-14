@@ -14,7 +14,11 @@
     "url": "http://fabble.cc/mhidaka/kddihackathonteam9"
   },
   "type": "privileged",
-  "permissions": {},
+  "permissions": {
+    "systemXHR": {
+      "description": "xhr! xhr!"
+    }
+  },
   "installs_allowed_from": [
     "*"
   ],

@@ -1,7 +1,7 @@
 var server = (function () {
 
   function CloudPoint() {
-    cloud　= this;
+    cloud = this;
     this.HOST = 'http://firefox-team9.azurewebsites.net/hamster';
 
     this.xhr = function(method, url, data, success, error){

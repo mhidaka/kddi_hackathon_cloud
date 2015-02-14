@@ -1,11 +1,11 @@
 var server = (function () {
 
   function CloudPoint() {
-    cloud　= this;
+    cloud = this;
     this.HOST = 'http://firefox-team9.azurewebsites.net/hamster';
 
     this.xhr = function(method, url, data, success, error){
-        var ajax = new XMLHttpRequest();
+        var ajax = new XMLHttpRequest({mozSystem: true});
         ajax.open(method, url,true);
         ajax.onreadystatechange = function Receive() {
           if (ajax.readyState == 4 && ajax.status == 200){
@@ -18,12 +18,12 @@ var server = (function () {
       };
 
       this.getLastData = function(){
-        url = cloud.HOST + '/get_latest?callback=server.callback';
+        url = cloud.HOST + '/get_latest';
         server.xhr('GET', url, {}, function(data){
           console.log(data);
           json = JSON.stringify(data);
           alert(json);
-        }
+        });
 
         //var script = document.createElement('script');
         //script.src = cloud.HOST + '/get_latest?callback=server.callback';
@@ -35,7 +35,7 @@ var server = (function () {
           json = JSON.stringify(data);
           alert(json);
       };
-      
+
   }
   return new CloudPoint();
 })();

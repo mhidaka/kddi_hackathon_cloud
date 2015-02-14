@@ -12,6 +12,21 @@
         <script src="js/material.min.js"></script>
         <script src="js/hamu.js"></script>
         <script src="js/main.js"></script>>
+        <style>
+            h1{
+                font-size: 20px;
+            }
+            article{
+                border-radius: 10px;
+                padding: 10px;
+                background-color: white;
+                margin-bottom: 10px;
+            }
+
+            .ham_status_image{
+                width: 100%;
+            }
+        </style>
     </head>
     <body>
         <div class="navbar navbar-warning">
@@ -24,19 +39,27 @@
                 <a class="navbar-brand" href="javascript:void(0)">ハムクラウド</a>
             </div>
         </div>
-        <!-- Your site -->
-        <h1>You can add your site here.</h1>
-        <h2>To ensure that material-design theme is working, check out the buttons below.</h2>
-        <h3 class="text-muted">If you can see the ripple effect on clicking them, then you are good to go!</h3>
-        <p class="bs-component">
-            <a href="javascript:void(0)" class="btn btn-default">Default</a>
-            <a href="javascript:void(0)" class="btn btn-primary">Primary</a>
-            <a href="javascript:void(0)" class="btn btn-success">Success</a>
-            <a href="javascript:void(0)" class="btn btn-info">Info</a>
-            <a href="javascript:void(0)" class="btn btn-warning">Warning</a>
-            <a href="javascript:void(0)" class="btn btn-danger">Danger</a>
-            <a href="javascript:void(0)" class="btn btn-link">Link</a>
-        </p>
-        <!-- Your site ends -->
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">現在の状況</h3>
+            </div>
+            <div class="panel-body">
+                <img class="ham_status_image" src="images/hamu02.jpg">
+            </div>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">ハムスターからのお知らせ</h3>
+            </div>
+            <div class="panel-body">
+                <p class="recommend_info">
+                    <ul>
+                        <li>明日は寒いので暖房をつけてください</li>
+                        <li>餌の補充がそろそろ必要です</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
     </body>
 </html>

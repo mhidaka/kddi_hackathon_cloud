@@ -18,9 +18,16 @@ var server = (function () {
       };
 
       this.getLastData = function(){
-        var script = document.createElement('script');
-        script.src = cloud.HOST + '/get_latest?callback=server.callback';
-        document.body.appendChild(script);
+        url = cloud.HOST + '/get_latest?callback=server.callback';
+        server.xhr('GET', url, {}, function(data){
+          console.log(data);
+          json = JSON.stringify(data);
+          alert(json);
+        }
+
+        //var script = document.createElement('script');
+        //script.src = cloud.HOST + '/get_latest?callback=server.callback';
+        //document.body.appendChild(script);
       };
 
       this.callback = function(data){
@@ -28,6 +35,7 @@ var server = (function () {
           json = JSON.stringify(data);
           alert(json);
       };
+      
   }
   return new CloudPoint();
 })();

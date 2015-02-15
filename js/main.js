@@ -1,4 +1,6 @@
 $(document).ready(function() {
     $.material.init();
-    server.getLastData();
+    setInterval(function(){
+        server.getLastData();
+    },1000);
 });

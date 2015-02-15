@@ -17,7 +17,7 @@ var server = (function () {
             ajax.send(data);
         };
 
-        this.getLastData = function () {
+        this.getLastDataforMain = function () {
             url = cloud.HOST + '/get_latest';
 
             STATUS_ACTIVE = 100;
@@ -55,6 +55,58 @@ var server = (function () {
             //var script = document.createElement('script');
             //script.src = cloud.HOST + '/get_latest?callback=server.callback';
             //document.body.appendChild(script);
+        };
+
+        this.getLastDataforDetail = function(){
+            url = cloud.HOST + '/get_latest';
+
+            MATCH_WATER = 100;
+            STANDARD_WATER = 10;
+
+            MATCH_FOOD = 100;
+            STANDARD_FOOD = 10;
+
+            server.xhr('GET', url, {}, function (data) {
+                console.log(data);
+                var json = JSON.parse(data);
+
+                console.log("室温" + json.data.room);
+                console.log("水量" + json.data.water);
+                console.log("餌量" + json.data.food);
+
+                var getWaterStatus = function(json){
+                    var waterRate = json.data.water;
+                    msg = "すくない";
+
+                    if (waterRate >= MATCH_WATER) {
+                        msg = "いっぱい";
+                    } if (waterRate >= STANDARD_WATER) {
+                        msg = "ふつう";
+                    }else{
+                        msg = "すくない";
+                    }
+                    return msg;
+                };
+
+                var getFoodStatus = function(json){
+                    var foodRate = json.data.food;
+                    msg = "すくない";
+
+                    if (foodRate >= MATCH_FOOD) {
+                        msg = "いっぱい";
+                    } if (foodRate >= STANDARD_FOOD) {
+                        msg = "ふつう";
+                    }else{
+                        msg = "すくない";
+                    }
+                    return msg;
+                };
+
+                $("#temperature").html(json.data.room);
+                $("#water").html(getWaterStatus(json));
+                $("#food").html(getFoodStatus(json));
+            });
+
         };
 
         this.callback = function (data) {

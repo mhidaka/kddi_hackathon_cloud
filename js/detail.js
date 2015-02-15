@@ -8,7 +8,8 @@ var chartdata53 = {
     "roundedUpMaxY": 100,
     "width": 325,
     "height": 200,
-    "onlyChart":"yes"
+    "onlyChart":"yes",
+    "bg": "#fff"
   },
 
   "data": [

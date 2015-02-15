@@ -17,7 +17,7 @@ var server = (function () {
             ajax.send(data);
         };
 
-        this.getLastData = function () {
+        this.getLastDataforMain = function () {
             url = cloud.HOST + '/get_latest';
 
             STATUS_ACTIVE = 100;
@@ -55,6 +55,25 @@ var server = (function () {
             //var script = document.createElement('script');
             //script.src = cloud.HOST + '/get_latest?callback=server.callback';
             //document.body.appendChild(script);
+        };
+
+        this.getLastDataforDetail = function(){
+            url = cloud.HOST + '/get_latest';
+
+            server.xhr('GET', url, {}, function (data) {
+                console.log(data);
+                var json = JSON.parse(data);
+
+                console.log("室温" + json.data.room);
+                console.log("水量" + json.data.water);
+                console.log("水量" + json.data.food);
+
+                $("#temperature").html(json.data.room);
+                $("#temperature").paddingTop();
+                $("#water").html(json.data.water);
+                $("#food").html(json.data.food);
+            });
+
         };
 
         this.callback = function (data) {

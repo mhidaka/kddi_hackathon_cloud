@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $.material.init();
     setInterval(function(){
-        server.getLastData();
+        server.getLastDataforMain();
     },1000);
 });

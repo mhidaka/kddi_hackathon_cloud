@@ -20,4 +20,5 @@ var chartdata53 = {
 
 $(document).ready(function() {
 	ccchart.init("activity", chartdata53);
+    server.getLastDataforDetail();
 });

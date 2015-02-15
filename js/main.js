@@ -3,4 +3,5 @@ $(document).ready(function() {
     setInterval(function(){
         server.getLastDataforMain();
     },1000);
+    server.getLastDataforMsg();
 });

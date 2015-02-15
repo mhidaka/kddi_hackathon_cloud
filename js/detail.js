@@ -1,4 +1,4 @@
-var chartdata53 = {
+var chartdata = {
   "config": {
     "type": "stackedarea",
     "colorSet": 
@@ -19,5 +19,7 @@ var chartdata53 = {
 };
 
 $(document).ready(function() {
-	ccchart.init("activity", chartdata53);
+	ccchart.init("activity", chartdata);
+	server.getActivity();
 });
+

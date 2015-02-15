@@ -63,6 +63,31 @@ var server = (function () {
 //          alert(json);
         };
 
+
+        this.getActivity = function (){
+          url = cloud.HOST + '/get_activity';
+          server.xhr('GET', url, {}, function (data) {
+              console.log(data);
+              var json = JSON.parse(data);
+              
+              chart = [];
+              chart[0] = [];
+              chart[1] = [];
+              chart[0][0] = '分';
+              chart[1][0] = 'ハム';
+              
+              for (var i=0; i < json.data.length;i++){
+                  index = i+1;
+                  chart[0][index]  = index;
+                  chart[1][index]  = json.data[i].rpm;
+                  console.log(i +': '+json.data[i].rpm);
+              } 
+              chartdata.data = chart;
+             	ccchart.init("activity", chartdata);
+             
+          });
+        };
+
     }
 
     return new CloudPoint();

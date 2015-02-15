@@ -20,8 +20,8 @@ var server = (function () {
         this.getLastDataforMain = function () {
             url = cloud.HOST + '/get_latest';
 
-            STATUS_ACTIVE = 100;
-            STATUS_NATURAL = 10;
+            STATUS_ACTIVE = 8;
+            STATUS_NATURAL = 4;
 
             // ハムスターのアクティブ値を計算し、imgパスを返す
             // 01:普通 02:寝ている 03:元気
@@ -110,11 +110,11 @@ var server = (function () {
         this.getLastDataforDetail = function(){
             url = cloud.HOST + '/get_latest';
 
-            MATCH_WATER = 100;
-            STANDARD_WATER = 10;
+            MATCH_WATER = 50;
+            STANDARD_WATER = 20;
 
-            MATCH_FOOD = 100;
-            STANDARD_FOOD = 10;
+            MATCH_FOOD = 40;
+            STANDARD_FOOD = 20;
 
             server.xhr('GET', url, {}, function (data) {
                 console.log(data);

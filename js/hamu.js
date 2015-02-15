@@ -19,29 +19,37 @@ var server = (function () {
 
         this.getLastData = function () {
             url = cloud.HOST + '/get_latest';
+
+            STATUS_ACTIVE = 100;
+            STATUS_NATURAL = 10;
+
+            // ハムスターのアクティブ値を計算し、imgパスを返す
+            // 01:普通 02:寝ている 03:元気
+            var getStatusImageSrc = function(data){
+                var hamStatus = data.data.rpm;
+                var src = "";
+
+                if (hamStatus >= STATUS_ACTIVE) {
+                    src = "images/hamu03.jpg";
+                } if (hamStatus >= STATUS_NATURAL) {
+                    src = "images/hamu01.jpg";
+                }else{
+                    src = "images/hamu02.jpg";
+                }
+
+                return src;
+            };
+
             server.xhr('GET', url, {}, function (data) {
                 console.log(data);
                 var json = JSON.parse(data);
 //          alert(json);
-
 //          alert(json.data.id);
 
+                var hamStatusImg = getStatusImageSrc(json);
+                console.log(hamStatusImg);
 
-                var test = $("#test").html();
-                $("#test").html(test + " " + json.data.id);
-
-//                var hamStatus = calc(json);
-//                if (hamStatus == 1) {
-//                    $(".ham_status_image").attr("src", "images/hamu01.jpg");
-//                } else {
-//                    $(".ham_status_image").attr("src", "images/hamu02.jpg");
-//                }
-
-//                var calc = function (data) {
-//
-//                    return 1;
-//                };
-
+                $(".ham_status_image").attr("src", hamStatusImg);
             });
 
             //var script = document.createElement('script');
@@ -53,10 +61,6 @@ var server = (function () {
 //          console.log(data);
             json = JSON.stringify(data);
 //          alert(json);
-//
-//        var id = json.data.id;
-//        var test = $("#test").html();
-//        $("#test").html(test+ " " + json);
         };
 
     }

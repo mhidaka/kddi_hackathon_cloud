@@ -10,8 +10,9 @@
         <script src="js/bootstrap.js"></script>
         <script src="js/ripples.min.js"></script>
         <script src="js/material.min.js"></script>
+        <script src="js/ccchart.js"></script>
         <script src="js/hamu.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/detail.js"></script>
         <style>
             h1{
                 font-size: 20px;
@@ -31,35 +32,40 @@
     <body>
         <div class="navbar navbar-warning">
             <div class="navbar-header">
-                <a href="detail.html">
                 <button type="button" class="navbar-toggle">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                </a>
-                <a class="navbar-brand" href="index.html">ハムクラウド</a>
+                <a class="navbar-brand" href="index.html">ハムの状態</a>
             </div>
         </div>
 
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">現在の状況</h3>
+                <h3 class="panel-title">活動状況</h3>
             </div>
             <div class="panel-body">
-                <img class="ham_status_image" src="images/hamu02.jpg">
+                <canvas id="activity"></canvas>
             </div>
         </div>
         <div class="panel panel-warning">
             <div class="panel-heading">
-                <h3 class="panel-title">ハムスターからのお知らせ</h3>
+                <h3 class="panel-title">現在の気温</h3>
             </div>
             <div class="panel-body">
                 <p class="recommend_info">
-                    <ul>
-                        <li>明日は寒いので暖房をつけてください</li>
-                        <li>餌の補充がそろそろ必要です</li>
-                    </ul>
+                    26度
+                </p>
+            </div>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">エサとお水</h3>
+            </div>
+            <div class="panel-body">
+                <p class="recommend_info">
+                    在庫：僅少
                 </p>
             </div>
         </div>

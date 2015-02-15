@@ -49,12 +49,62 @@ var server = (function () {
                 var hamStatusImg = getStatusImageSrc(json);
                 console.log(hamStatusImg);
 
+                // アクティブ画像
                 $(".ham_status_image").attr("src", hamStatusImg);
+
             });
 
             //var script = document.createElement('script');
             //script.src = cloud.HOST + '/get_latest?callback=server.callback';
             //document.body.appendChild(script);
+        };
+
+        // ハムからのメッセージリスト
+        this.getLastDataforMsg = function(){
+            url = cloud.HOST + '/get_latest';
+
+            LESS_WATER = 10;
+            LESS_FOOD = 10;
+            LOW_TEMPLATURE = 10;
+            HIGH_TEMPLATURE = 27;
+
+            server.xhr('GET', url, {}, function (data) {
+                console.log(data);
+                var json = JSON.parse(data);
+                var $listParent = $("#recommend_info");
+
+                var msgCount = 0;
+
+                if(json.data.water < LESS_WATER){
+                    var msg = $('<li>お水が少ないよ。足してね</li>');
+                    $listParent.append(msg);
+
+                    msgCount++;
+                }
+
+                if(json.data.food < LESS_FOOD){
+                    var msg = $('<li>ゴハンが少ないよ。足してね</li>');
+                    $listParent.append(msg);
+                    msgCount++;
+                }
+
+                if(json.data.room < LOW_TEMPLATURE){
+                    var msg = $('<li>寒いよ。あったかくしてほしいな</li>');
+                    $listParent.append(msg);
+                    msgCount++;
+                }
+
+                if(json.data.room > HIGH_TEMPLATURE){
+                    var msg = $('<li>暑いよ。涼しくしてほしいな</li>');
+                    $listParent.append(msg);
+                    msgCount++;
+                }
+
+                if(msgCount == 0){
+                    var msg = $('<li>快適だよ。ありがとう！</li>');
+                    $listParent.append(msg);
+                }
+            });
         };
 
         this.getLastDataforDetail = function(){
